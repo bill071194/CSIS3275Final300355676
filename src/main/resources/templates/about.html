@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .header {
+      background-color:#333333;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    #nav-logo{
+      width:50px;
+      height: auto;
+      border-radius: 100%;
+    }
+
+    #logo-image {
+      align-self: center;
+    }
+
+    .content {
+      height: 600px;
+      min-height: 80%;
+    }
+
+    .content-register{
+      height:2100px;
+      min-height: 80%;
+    }
+
+    .nav {
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    .nav li {
+      display:inline;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform:uppercase;
+      margin-left:10px;
+      margin-right:10px;
+    }
+
+    .main {
+      position: relative;
+      top: 120px;
+      text-align: center;
+    }
+
+    .main h1 {
+      color: #333;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 70px;
+      margin-top: 0;
+      margin-bottom: 80px;
+      text-transform: uppercase;
+    }
+
+
+    .btn-main {
+      background-color: #333;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 1.3px;
+      padding: 16px 40px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    .btn-default {
+      color:#333;
+      border:1px solid #333333;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 1.3px;
+      padding: 10px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 20px;
+      padding-right:50px;
+      padding-left:50px;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px 0;
+    }
+
+    .footer p {
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    form{
+      padding-top: 80px;
+      text-align: center ;
+    }
+
+    .text{
+      width: 200px;
+      padding: 10px 20px;
+      display: block;
+      height: 15px;
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+
+    .content, .content-register{
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 500px) {
+      .main h1 {
+        font-size: 50px;
+        padding: 0 40px;
+      }
+    }
+
+  </style>
+  <title>Sugar Track - About</title>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <ul class="nav">
+      <li><a th:href="@{index}"><img id ="nav-logo" th:src = "@{/Logo.png}" alt = "Logo Image"></a></li>      <li><a th:href="@{about}">About</a></li>
+      <li>Subscribe</li>
+      <li>Team</li>
+      <li>Contact</li>
+      <li><a th:href="@{signin}">Log In</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="content">
+  <form>
+    <div>
+      <h1 class="page-title">ABOUT SUGARTRACK</h1>
+      <br>
+      <br>
+      Welcome to SugarTrack App!
+      <br><br>
+      With our help, you will have all your diabetes data at your fingertips.
+      <br><br>
+      Use your rapid and basal insulins, count your carbs and calories, manage your exercises, your food and live a healthier life!
+      <br><br>
+      First, let us know you!
+      <br><br><br>
+      <a class="btn-main" th:href="@{signin}">GET STARTED</a>
+    </div>
+  </form>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p>&copy; Sugar Track 2022</p>
+  </div>
+</div>
+</body>
+</html>
+
+
