@@ -14,10 +14,10 @@ public class Physician {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long phID;
     private String password;
-    private String first_name;
-    private String last_name;
-    private String phone_number;
-    private String Address;
-    private String email_address;
-    private String licence_number;
+    private String firstname;
+    private String lastname;
+    private String phonenumber;
+    private String address;
+    private String emailaddress;
+    private String licencenumber;
 }

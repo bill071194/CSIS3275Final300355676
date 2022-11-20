@@ -13,25 +13,25 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pID;
+    private String emailaddress;
     private String password;
-    private String first_name;
-    private String last_name;
+    private String firstname;
+    private String lastname;
     private char gender;
-    private String phone_number;
-    private String country_code;
-    private String state_province;
+    private String phonenumber;
+    private String countrycode;
+    private String stateprovince;
     private String Address;
-    private String email_address;
     private float height;
     private float weight;
-    private int meals_per_day;
-    private int fav_food;
+    private int mealsperday;
+    private int favfood;
     private int exercise;
-    private int exercise_duration;
-    private String pregnancy_status;
-    private String emergency_first_name;
-    private String emergency_last_name;
-    private String emergency_phone;
-    private String emergency_email;
-    private String subscription_status;
+    private int exerciseduration;
+    private String pregnancystatus;
+    private String emergencyfirstname;
+    private String emergencylastname;
+    private String emergencyphone;
+    private String emergencyemail;
+    private String subscriptionstatus;
 }

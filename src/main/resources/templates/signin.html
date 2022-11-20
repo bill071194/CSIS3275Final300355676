@@ -152,6 +152,25 @@
     }
 
   </style>
+  <script th:inline="javascript">
+    var u = [[${session.a}]];
+    if(u==1){
+      alert('Account does not exist. Please Create an account');
+    } </script>
+  <script th:inline="javascript"> var u = [[${session.a}]];
+  if(u==2){
+    alert('Incorrect Password');
+  } </script>
+  <script th:inline="javascript">
+    var u = [[${session.a}]];
+    if(u==4){
+      alert('Patient account created. Thank you');
+    } </script>
+  <script th:inline="javascript">
+    var u = [[${session.a}]];
+    if(u==3){
+      alert('Physician Account created. Thank you');
+    } </script>
   <title>Sugar Track - Log In</title>
 </head>
 <body>
@@ -170,13 +189,13 @@
 
 
 <div class="content">
-  <form method="post" th:action="@{save}">
+  <form method="post" th:action="@{loginverify}">
     <div>
       <h1 class="page-title">SIGN IN</h1>
       <br>
       <label>USERNAME</label>
       <br>
-      <input type="text" class="text" name="username">
+      <input type="text" class="text" name="emailaddress">
       <br>
       <br>
       <label>PASSWORD</label>
@@ -185,12 +204,12 @@
       <br>
       <br>
       <br>
-      <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
+      <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" name="check" value="isADoctor"/>
       I am a doctor
       <br>
       <br>
       <br>
-      <button type="submit" class="btn-main" th:href="@{signup}">Sign In</button>
+      <button type="submit" class="btn-main" th:href="@{dashboard}">Sign In</button>
     </div>
       <p>Don't have an account? <a class="link" th:href="@{signup}">Sign Up</a></p>
       <p>To sign up as doctor, click <a class="link" th:href="@{doctor_signup}">here</a></p>
