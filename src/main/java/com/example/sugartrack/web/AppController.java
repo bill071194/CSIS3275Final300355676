@@ -112,4 +112,27 @@ public class AppController {
             }
         }
     }
+
+    @GetMapping("/adminpatient")
+    public String adminPatient(Model model){
+        List<Patient> patient = patientRepository.findAll();
+        model.addAttribute("listPatient", patient);
+
+        return "adminpatient";
+    }
+
+    @GetMapping("/adminphysician")
+    public String adminPhysician(Model model){
+        List<Physician> physician = physicianRepository.findAll();
+        model.addAttribute("listPhysician", physician);
+
+        return "adminphysician";
+    }
+
+    @GetMapping("/deletepatient")
+    public String deletePatient(Long id){
+        patientRepository.deleteBypID(id);
+        return "redirect:/adminpatient";
+    }
+
 }
