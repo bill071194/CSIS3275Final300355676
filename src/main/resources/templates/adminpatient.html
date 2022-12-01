@@ -175,6 +175,12 @@
         }
 
     </style>
+    <script th:inline="javascript">
+        var u = [[${session.a}]];
+        if(u==6){
+            alert('One patient edited. Thank you');
+        } </script>
+
     <title>Sugar Track - Home</title>
 </head>
 <body>
@@ -203,11 +209,9 @@
                 <td th:text="${p.getFirstname()}"></td>
                 <td th:text="${p.getLastname()}"></td>
                 <td th:text="${p.getEmailaddress()}"></td>
-                <td><a class="tb-btn-1" href="">Detail</a></td>
-                <td><a class ="tb-btn-2" href="">Edit</a></td>
-                <td><a class="tb-btn-3" href="">Delete</a></td>
-
-                <!--                <td><a class="tb-btn-3" onClick="return confirm('Are you sure you want to delete the record ?')" th:href="@{deletepatient(id=${p.getPID()})}">Delete</a></td>-->
+                <td><a class="tb-btn-1" th:href="@{detailpatient(id=${p.getPID()})}">Detail</a></td>
+                <td><a class ="tb-btn-2" th:href="@{editpatient(id=${p.getPID()})}">Edit</a></td>
+                <td><a class="tb-btn-3" onClick="return confirm('Are you sure you want to delete the record ?')" th:href="@{deletepatient(id=${p.getPID()})}">Delete</a></td>
             </tr> </tbody>
         </table>
 

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    .content-register p .link{
+      color: black;
+      text-decoration: none;
+    }
+
+    .header {
+      background-color:#333333;
+    }
+
+    .container {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    #nav-logo{
+      width:50px;
+      height: auto;
+      border-radius: 100%;
+    }
+
+    #logo-image {
+      align-self: center;
+    }
+
+    .content {
+      height: 600px;
+      min-height: 80%;
+    }
+
+    .content-register{
+      height:2250px;
+      min-height: 80%;
+    }
+
+    .nav {
+      margin: 0;
+      padding: 20px 0;
+    }
+
+    .nav li {
+      display:inline;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform:uppercase;
+      margin-left:10px;
+      margin-right:10px;
+    }
+
+    .main {
+      position: relative;
+      top: 120px;
+      text-align: center;
+    }
+
+    .main h1 {
+      color: #333;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 70px;
+      margin-top: 0;
+      margin-bottom: 80px;
+      text-transform: uppercase;
+    }
+
+
+    .btn-main {
+      background-color: #333;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      letter-spacing: 1.3px;
+      padding: 16px 40px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .btn-default {
+      color:#333;
+      border:1px solid #333333;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 1.3px;
+      padding: 10px 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 20px;
+      padding-right:50px;
+      padding-left:50px;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px 0;
+    }
+
+    .footer p {
+      font-family: 'Raleway', sans-serif;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    form{
+      padding-top: 80px;
+      text-align: center ;
+    }
+
+    .text{
+      width: 200px;
+      padding: 10px 20px;
+      display: block;
+      height: 15px;
+      border-radius: 20px;
+      margin-top: 15px;
+    }
+
+    .content, .content-register{
+      display: flex;
+      justify-content: center;
+    }
+
+    @media (max-width: 500px) {
+      .main h1 {
+        font-size: 50px;
+        padding: 0 40px;
+      }
+    }
+
+  </style>
+  <title>Sugar Track - Patient Register</title>
+</head>
+<body>
+<div class="header">
+  <div class="container">
+    <ul class="nav">
+      <li><a th:href="@{index}"><img id ="nav-logo" th:src = "@{/Logo.png}" alt = "Logo Image"></a></li>
+      <li><a th:href="@{about}">About</a></li>
+      <li>Subscribe</li>
+      <li>Team</li>
+      <li>Contact</li>
+      <li><a th:href="@{signin}">Log In</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="content-register">
+  <form method="post" th:action="@{saveeditpatient}">
+    <div>
+      <h1 class="page-title">EDIT PATIENT</h1>
+      <br>
+      <label>ID</label>
+      <input type="text" class="text" name="pID" th:value="${patient.pID}">
+      <br>
+      <label>FIRST NAME</label>
+      <input type="text" class="text" name="firstname" th:value="${patient.firstname}">
+      <br>
+      <label>LAST NAME</label>
+      <input type="text" class="text" name="lastname" th:value="${patient.lastname}">
+      <br>
+      <label>EMAIL</label>
+      <br>
+      <input type="text" class="text" name="emailaddress" th:value="${patient.emailaddress}">
+      <br>
+      <label>PASSWORD</label>
+      <br>
+      <input type="password" class="text" name="password" th:value="${patient.password}">
+      <br>
+      <label>GENDER</label>
+      <br><br>
+      <select name ="gender" th:value="${patient.gender}">
+        <option value="">Select Gender</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="N/A">Prefer not to say</option>
+      </select>
+      <br>
+      <br>
+      <label>PHONE NUMBER</label>
+      <br>
+      <input type="number" class="text" name="phonenumber" th:value="${patient.phonenumber}">
+      <br>
+      <label>COUNTRY_CODE</label>
+      <br>
+      <input type="text" class="text" name="countrycode" th:value="${patient.countrycode}">
+      <br>
+      <label>STATE/PROVINCE</label>
+      <br>
+      <input type="text" class="text" name="stateprovince" th:value="${patient.stateprovince}">
+      <br>
+      <label>ADDRESS</label>
+      <br>
+      <input type="text" class="text" name="address" th:value="${patient.address}">
+      <br>
+      <label>HEIGHT</label>
+      <br>
+      <input type="text" class="text" name="height" th:value="${patient.height}">
+      <br>
+      <label>WEIGHT</label>
+      <br>
+      <input type="text" class="text" name="weight" th:value="${patient.weight}">
+      <br>
+      <label>MEALS_PER_DAY</label>
+      <br>
+      <input type="text" class="text" name="mealsperday" th:value="${patient.mealsperday}">
+      <br>
+      <label>FAV_FOOD</label>
+      <br>
+      <input type="text" class="text" name="favfood" th:value="${patient.favfood}">
+      <br>
+      <label>EXERCISE PER DAY</label>
+      <br>
+      <input type="number" class="text" name="exercise" th:value="${patient.exercise}">
+      <br>
+      <label>EXERCISE DURATION</label>
+      <br>
+      <input type="text" class="text" name="exerciseduration" th:value="${patient.exerciseduration}">
+      <br>
+      <label>PREGNANCY STATUS</label>
+      <br><br>
+      <select name="pregnancystatus" th:value="${patient.pregnancystatus}">
+        <option value="">Select Option</option>
+        <option value="Y">Pregnant</option>
+        <option value="N">Not Pregnant</option>
+      </select>
+      <br><br>
+      <label>EMERGENCY FIRST NAME</label>
+      <br>
+      <input type="text" class="text" name="emergencyfirstname" th:value="${patient.emergencyfirstname}">
+      <br>
+      <label>EMERGENCY LAST NAME</label>
+      <br>
+      <input type="text" class="text" name="emergencylastname" th:value="${patient.emergencylastname}">
+      <br>
+      <label>EMERGENCY PHONE</label>
+      <br>
+      <input type="number" class="text" name="emergencyphone" th:value="${patient.emergencyphone}">
+      <br>
+      <label>EMERGENCY EMAIL</label>
+      <br>
+      <input type="text" class="text" name="emergencyemail" th:value="${patient.emergencyemail}">
+      <br>
+      <label>SUBSCRIPTION STATUS</label>
+      <br><br>
+      <select name="subscriptionstatus" th:value="${patient.subscriptionstatus}">
+        <option value="">Select Option</option>
+        <option value="F">Free</option>
+        <option value="P">Premium</option>
+      </select>
+      <br><br>
+      <button type="submit" class="btn-main" th:href="@{/editpatientdetails}">Edit Patient</button>
+    </div>
+  </form>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p>&copy; Sugar Track 2022</p>
+  </div>
+</div>
+</body>
+</html>
+
+

@@ -203,9 +203,9 @@
                 <td th:text="${p.getFirstname()}"></td>
                 <td th:text="${p.getLastname()}"></td>
                 <td th:text="${p.getEmailaddress()}"></td>
-                <td><a class="tb-btn-1" href="">Detail</a></td>
-                <td><a class ="tb-btn-2" href="">Edit</a></td>
-                <td><a class="tb-btn-3" href="">Delete</a></td>
+                <td><a class="tb-btn-1" th:href="@{detailphysician(id=${p.getPhID()})}">Detail</a></td>
+                <td><a class ="tb-btn-2" th:href="@{editphysician(id=${p.getPhID()})}">Edit</a></td>
+                <td><a class="tb-btn-3" onClick="return confirm('Are you sure you want to delete the record ?')" th:href="@{deletephysician(id=${p.getPhID()})}">Delete</a></td>
             </tr> </tbody>
         </table>
 

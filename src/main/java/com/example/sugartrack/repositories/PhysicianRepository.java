@@ -8,4 +8,7 @@ import java.util.List;
 
 public interface PhysicianRepository extends JpaRepository<Physician, Long>{
     List<Physician> findPhysicianByemailaddress(String emailaddress);
+
+    List<Physician> findPhysicianByphID(Long phID);
+    List<Physician> deleteByphID(Long id);
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @SessionAttributes({"a","e"})
@@ -77,7 +78,6 @@ public class AppController {
 
     @PostMapping("/loginverify")
     public String verifylogin(Model model, @RequestParam(name = "emailaddress", defaultValue = "")String emailaddress, @RequestParam(name="password", defaultValue = "")String password, ModelMap mm,@RequestParam(name="check", defaultValue = "")String check){
-        System.out.println(check);
         if (!check.equals("isADoctor")) {
             List<Patient> patient;
             patient = patientRepository.findPatientByemailaddress(emailaddress);
@@ -129,10 +129,70 @@ public class AppController {
         return "adminphysician";
     }
 
+    @Transactional
     @GetMapping("/deletepatient")
-    public String deletePatient(Long id){
+    public String deletePatient(Long id, ModelMap mm){
         patientRepository.deleteBypID(id);
+        mm.put("a", 0);
         return "redirect:/adminpatient";
     }
 
+    @GetMapping("/editpatient")
+    public String editpatient(Model model, @RequestParam(name = "id", defaultValue = "")Long id){
+        List<Patient> patient = patientRepository.findPatientBypID(id);
+        Patient user = patient.get(0);
+        model.addAttribute("patient", user);
+        return "editpatient";
+    }
+
+    @PostMapping(path="/saveeditpatient")
+    public String saveEditPatient(Patient patient, BindingResult bindingResult, ModelMap mm){
+            mm.put("a",6);
+            patientRepository.save(patient);
+            return "redirect:adminpatient";
+    }
+
+    @GetMapping("/detailpatient")
+    public String detailpatient(Model model, @RequestParam(name = "id", defaultValue = "")Long id){
+        List<Patient> patient = patientRepository.findPatientBypID(id);
+        Patient user = patient.get(0);
+        model.addAttribute("patient", user);
+        return "detailpatient";
+    }
+
+    @Transactional
+    @GetMapping("/deletephysician")
+    public String deletePhysician(Long id, ModelMap mm){
+        physicianRepository.deleteByphID(id);
+        mm.put("a", 0);
+        return "redirect:/adminphysician";
+    }
+
+    @GetMapping("/editphysician")
+    public String editphysician(Model model, @RequestParam(name = "id", defaultValue = "")Long id){
+        List<Physician> physician = physicianRepository.findPhysicianByphID(id);
+        Physician user = physician.get(0);
+        model.addAttribute("physician", user);
+        return "editphysician";
+    }
+
+    @PostMapping(path="/saveeditphysician")
+    public String saveEditPhysician(Physician physician, BindingResult bindingResult, ModelMap mm){
+        mm.put("a",7);
+        physicianRepository.save(physician);
+        return "redirect:adminphysician";
+    }
+
+    @GetMapping("/detailphysician")
+    public String detailphysician(Model model, @RequestParam(name = "id", defaultValue = "")Long id){
+        List<Physician> physician = physicianRepository.findPhysicianByphID(id);
+        Physician user = physician.get(0);
+        model.addAttribute("physician", user);
+        return "detailphysician";
+    }
+
+    @GetMapping("/adminhome")
+    public String adminhome() {
+        return "adminhome";
+    }
 }
