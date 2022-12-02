@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400, 600' rel='stylesheet' type='text/css'>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .header {
+            background-color:#333333;
+        }
+
+        .container {
+            max-width: 940px;
+            margin: 0 auto;
+            padding: 0 10px;
+        }
+
+        .logo-home {
+            margin: 10px;
+            top: 30px;
+            justify-content: center;
+            display: flex;
+        }
+
+        #nav-logo{
+            width:50px;
+            height: auto;
+            border-radius: 100%;
+        }
+
+        #logo-image {
+            align-self: center;
+        }
+
+        .content {
+            height: 600px;
+        }
+
+        .nav {
+            margin: 0;
+            padding: 20px 0;
+        }
+
+        .nav li {
+            display:inline;
+            color: #fff;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform:uppercase;
+            margin-left:10px;
+            margin-right:10px;
+        }
+
+
+
+        .main h1 {
+            color: #333;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 25px;
+            margin-top: 0;
+            margin-bottom: 80px;
+            text-transform: uppercase;
+        }
+
+
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+        }
+
+        .footer p {
+            font-family: 'Raleway', sans-serif;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .teamimage{
+            padding-top: 10px;
+            border-radius: 100%;
+            float: left;
+            width: 70px;
+        }
+        .teamdesc{
+            padding-left: 90px;
+            font-size: 24px;
+        }
+        .teamdesctext{
+            padding-left: 90px;
+        }
+        .page-title{
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+
+        }
+        @media (max-width: 500px) {
+            .main h1 {
+                font-size: 50px;
+                padding: 0 40px;
+            }
+        }
+    </style>
+    <title>Sugar Track - Home</title>
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <ul class="nav">
+            <li><a th:href="@{index}"><img id ="nav-logo" th:src = "@{/Logo.png}" alt = "Logo Image"></a></li>            <li><a th:href="@{about}">About</a></li>
+            <li>Subscribe</li>
+            <li>Team</li>
+            <li>Contact</li>
+            <li><a th:href="@{signin}">Log In</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="content">
+    <div class="container">
+            <h1 class="page-title">OUR TEAM</h1>
+            <div class="teammember">
+                <img class="teamimage" th:src = "@{/Bruno.jpg}" alt= "Bruno">
+                <h1 class="teamdesc">BRUNO FINKIELMAN</h1>
+                <p class="teamdesctext">Born in Brazil, worked as a lawyer in his home country. When he moved to Canada he changed careers to work as a Data and Business Analyst. In this WebApp, he is one of the co-creators of SUGARTRACK design.</p>
+            </div>
+        <br>
+            <div class="teammember">
+                <img class="teamimage" th:src = "@{/Kritika.png}" alt= "Kritika">
+                <h1 class="teamdesc">KRITIKA BHANDARI</h1>
+                <p class="teamdesctext">Born and raised in Nepal, listens to and lives in Lana Del Ray's music. She doesn't wake up without coffee. She likes to code, roam around, read books and help others. In this WebApp, she is the coder of SUGARTRACK. </p>
+            </div>
+        <br>
+            <div class="teammember">
+                <img class="teamimage" th:src = "@{/Bill.jpg}" alt= "Bill">
+                <h1 class="teamdesc">VIET ANH (BILL) NGUYEN</h1>
+                <p class="teamdesctext">Viet Anh (Bill) is a long time biomedical and health services researcher who is passionate about technologies. Bill joined the Sugartrack team as a developer focusing on requirements analysis and market analysis.</p>
+            </div>
+        <br>
+            <div class="teammember">
+                <img class="teamimage" th:src = "@{/Noushin.jpeg}" alt= "Noushin">
+                <h1 class="teamdesc">NOUSHIN CHABOKI BEHBAHANI  </h1>
+                <p class="teamdesctext">Born in Iran, worked as a Database Developer in Iran. At the moment, she is an international student at Douglas College. In this project, she is one of the team members focusing on requirements analysis and design.</p>
+            </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="container">
+        <p>&copy; Sugar Track 2022</p>
+    </div>
+</div>
+</body>
+</html>
