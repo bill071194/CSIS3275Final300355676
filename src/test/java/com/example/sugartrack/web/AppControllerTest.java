@@ -38,8 +38,11 @@ class AppControllerTest {
 
     @Mock
     FoodRepository foodRepository;
+    @Mock
     PatientRepository patientRepository;
+    @Mock
     PhysicianRepository physicianRepository;
+    @Mock
     SugarRepository sugarRepository;
 
     @Mock
