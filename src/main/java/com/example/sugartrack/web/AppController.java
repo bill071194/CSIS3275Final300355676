@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.websocket.OnError;
 import java.util.List;
@@ -74,7 +73,7 @@ public class AppController {
     }
 
     @PostMapping(path="/savedoctor")
-    public String saveDotor(Physician physician, BindingResult bindingResult, ModelMap mm){
+    public String saveDoctor(Physician physician, BindingResult bindingResult, ModelMap mm){
         if (bindingResult.hasErrors()){
             return "doctor_signup";
         }else{
