@@ -38,10 +38,6 @@
             border-radius: 100%;
         }
 
-        #logo-image {
-            align-self: center;
-        }
-
         .content {
             height: 1000px;
             min-height: 80%;
@@ -213,7 +209,10 @@
                     <input type="number" class="text" name="units" th:value="${sugar.units}">
                     <br><br>
                     <button type="submit" class="btn-main" th:href="@{/index}">LOG SUGAR</button>
+                    <br><br>
+                    <a class="btn-main" th:href="@{/graph}">VIEW TRENDS</a>
                 </div>
+
             </form>
         </div>
         <div class = "carbs">
@@ -266,6 +265,8 @@
                     <input type="text" class="text" name="comment" th:value="${food.comment}">
                     <br><br>
                     <button type="submit" class="btn-main" th:href="@{/index}">LOG CARBS</button>
+                    <br><br>
+                    <a class="btn-main" th:href="@{/graphcarbs}">VIEW TRENDS</a>
                 </div>
             </form>
         </div>

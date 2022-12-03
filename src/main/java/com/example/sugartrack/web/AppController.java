@@ -24,7 +24,7 @@ import javax.websocket.OnError;
 import javax.websocket.Session;
 import java.util.List;
 
-@SessionAttributes({"a","e"})
+@SessionAttributes({"a","e", "d", "f"})
 @Controller
 @AllArgsConstructor
 public class AppController {
@@ -251,8 +251,16 @@ public class AppController {
     public String graph(Model model, ModelMap mm, HttpSession session){
         Long id = (Long) session.getAttribute("e");
         List<Sugar> sugardata = sugarRepository.findSugarBypID(id);
-        model.addAttribute(sugardata);
+        mm.put("d", sugardata);
         return "graph";
+    }
+
+    @GetMapping(path="/graphcarbs")
+    public String graphcarbs(Model model, ModelMap mm, HttpSession session){
+        Long id = (Long) session.getAttribute("e");
+        List <Food> fooddata = foodRepository.findFoodBypID(id);
+        mm.put("f", fooddata);
+        return "graphcarbs";
     }
 
     @OnError

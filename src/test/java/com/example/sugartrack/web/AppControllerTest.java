@@ -132,46 +132,9 @@ class AppControllerTest {
 
     @Test
     void editpatient() throws Exception {
-        List<Patient> p2 = new ArrayList<Patient>();
-
-        Patient p = new Patient();
-
-        p.setPID(1L);
-        p.setEmailaddress("johndoe@gmail.com");
-        p.setPassword("123456");
-        p.setFirstname("John");
-        p.setLastname("Mast");
-        p.setGender('M');
-        p.setPhonenumber("8888888888");
-        p.setCountrycode("1");
-        p.setStateprovince("BC");
-        p.setAddress("700 Royal Ave, New Westminster, BC");
-        p.setHeight((float) 1.83);
-        p.setWeight((float) 80.0);
-        p.setMealsperday(3);
-        p.setFavfood("Pasta");
-        p.setExercise(1);
-        p.setExerciseduration(30);
-        p.setPregnancystatus("N");
-        p.setEmergencyfirstname("Jane");
-        p.setEmergencylastname("Doe");
-        p.setEmergencyphone("6666666666");
-        p.setEmergencyemail("janedoe@gmail.com");
-        p.setSubscriptionstatus("Y");
-
-        p2.add(p);
-
-        Long iid = 1l;
-
-        when(patientRepository.findPatientBypID(iid)).thenReturn(p2);
-
-        mockMvc.perform(get("/editpatient").param("pID", String.valueOf(1L)))
+        mockMvc.perform(get("/editpatient"))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("patient", p2))
                 .andExpect(view().name("editpatient"));
-
-        verify(patientRepository,times(1)).findPatientBypID(anyLong());
-        verifyNoMoreInteractions(patientRepository);
     }
 
     @Test
