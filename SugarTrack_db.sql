@@ -7,7 +7,7 @@
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
-use "heroku_c2dcd1b592dbb4b";
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `food`
 --
+use "heroku_c2dcd1b592dbb4b";
 
 CREATE TABLE `food` (
   `carbid` bigint(20) NOT NULL,
