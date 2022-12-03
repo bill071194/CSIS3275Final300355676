@@ -193,4 +193,34 @@ class AppControllerTest {
         foodRepository.save(food);
         verify(foodRepository,times(1)).save(food);
     }
+
+    @Test
+    void signin() throws Exception {
+        mockMvc.perform(get("/signin"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("signin"));
+    }
+
+    @Test
+    void signup() throws Exception {
+        mockMvc.perform(get("/signup"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("patient", new Patient()))
+                .andExpect(view().name("signup"));
+    }
+
+    @Test
+    void doctor_signup() throws Exception{
+        mockMvc.perform(get("/doctor_signup"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("physician", new Physician()))
+                .andExpect(view().name("doctor_signup"));
+    }
+
+    @Test
+    void adminhome() throws Exception {
+        mockMvc.perform(get("/adminhome"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("adminhome"));
+    }
 }
