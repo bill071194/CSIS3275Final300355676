@@ -25,7 +25,7 @@ public class Patient {
     private float height;
     private float weight;
     private int mealsperday;
-    private int favfood;
+    private String favfood;
     private int exercise;
     private int exerciseduration;
     private String pregnancystatus;

@@ -17,6 +17,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.View;
@@ -30,6 +31,7 @@ import java.util.Optional;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
@@ -170,7 +172,9 @@ class AppControllerTest {
 //
 //        when(patientRepository.findPatientBypID(iid)).thenReturn(p2);
 //
-//        mockMvc.perform(get("/saveeditpatient").param("pID",String.valueOf(1L)))
+//        mockMvc.perform(post("/saveeditpatient")
+//                        .contentType(MediaType.ALL)
+//                        .content(p)
 //                .andExpect(status().isOk())
 //                .andExpect(model().attribute("patient", p2.get(0)))
 //                .andExpect(view().name("adminpatient"));

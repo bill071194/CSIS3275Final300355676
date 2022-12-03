@@ -12,11 +12,6 @@
       font-family: 'Raleway', sans-serif;
     }
 
-    .content-register p .link{
-      color: black;
-      text-decoration: none;
-    }
-
     .header {
       background-color:#333333;
     }
@@ -25,11 +20,6 @@
       max-width: 940px;
       margin: 0 auto;
       padding: 0 10px;
-    }
-
-    a {
-      text-decoration: none;
-      color: white;
     }
 
     #nav-logo{
@@ -48,7 +38,7 @@
     }
 
     .content-register{
-      height:1050px;
+      height:2100px;
       min-height: 80%;
     }
 
@@ -95,6 +85,11 @@
       padding: 16px 40px;
       text-decoration: none;
       text-transform: uppercase;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
     }
 
     .btn-default {
@@ -144,6 +139,9 @@
       justify-content: center;
     }
 
+    ul{
+      list-style: none;
+    }
     @media (max-width: 500px) {
       .main h1 {
         font-size: 50px;
@@ -152,7 +150,7 @@
     }
 
   </style>
-  <title>Sugar Track - Doctor Register</title>
+  <title>Sugar Track - About</title>
 </head>
 <body>
 <div class="header">
@@ -169,41 +167,26 @@
 </div>
 
 
-<div class="content-register">
-  <form method="post" th:action="@{savedoctor}">
+<div class="content">
+  <form>
     <div>
-      <h1 class="page-title">SIGN UP</h1>
-      <br>
-      <label>FIRST NAME</label>
-      <input type="text" class="text" name="firstname" th:value="${physician.firstname}">
-      <br>
-      <label>LAST NAME</label>
-      <input type="text" class="text" name="lastname" th:value="${physician.lastname}">
-      <br>
-      <label>EMAIL</label>
-      <br>
-      <input type="text" class="text" name="emailaddress" th:value="${physician.emailaddress}">
-      <br>
-      <label>PASSWORD</label>
-      <br>
-      <input type="password" class="text" name="password" th:value="${physician.password}">
+      <h1 class="page-title">TERMS AND CONDITIONS</h1>
       <br>
       <br>
-      <label>PHONE NUMBER</label>
-      <br>
-      <input type="number" class="text" name="phonenumber" th:value="${physician.phonenumber}">
-      <br>
-      <label>ADDRESS</label>
-      <br>
-      <input type="text" class="text" name="address" th:value="${physician.address}">
-      <br>
-      <label>LICENCE NUMBER</label>
-      <br>
-      <input type="text" class="text" name="licencenumber" th:value="${physician.licencenumber}">
+      SugarTrack may share the following data with appropriate third parties!
       <br><br>
-      <button type="submit" class="btn-main" th:href="@{/index}">Create Account</button>
+      <ul>
+        <li>Type of Diabeties</li>
+        <li>Insulin Type</li>
+        <li>Brand of Gulcose Meter, Strips</li>
+        <li>Biometric Data and Geographical Location</li>
+      </ul>
+      <br>Sharing this information will help these parties better understand Sugartrack's customers and provide better services to you.<br>
+      <br><br>
+      Data sharing is turned on by default, but you may opt out by logging into the app and going to settings.
+      <br><br><br>
+      <a class="btn-main" th:href="@{signin}">GET STARTED</a>
     </div>
-    <p>Already have an account? <a class="link" th:href="@{signin}">Sign In</a></p>
   </form>
 </div>
 
