@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import javax.websocket.OnError;
+import javax.websocket.Session;
 import java.util.List;
 
 @SessionAttributes({"a","e"})
@@ -244,6 +245,14 @@ public class AppController {
     @GetMapping(path="/terms_conditions")
     public String terms(){
         return "terms_conditions";
+    }
+
+    @GetMapping(path="/graph")
+    public String graph(Model model, ModelMap mm, HttpSession session){
+        Long id = (Long) session.getAttribute("e");
+        List<Sugar> sugardata = sugarRepository.findSugarBypID(id);
+        model.addAttribute(sugardata);
+        return "graph";
     }
 
     @OnError
