@@ -11,6 +11,7 @@ import com.example.sugartrack.repositories.SugarRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -20,8 +21,16 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.View;
 
+import javax.swing.text.html.Option;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 @ExtendWith(MockitoExtension.class)
@@ -77,6 +86,15 @@ class AppControllerTest {
         patient.setEmergencyemail("janedoe@gmail.com");
         patient.setSubscriptionstatus("Y");
 
+        physician = new Physician();
+        physician.setPhID(1L);
+        physician.setPassword("123456");
+        physician.setFirstname("Doc");
+        physician.setLastname("Ock");
+        physician.setPhonenumber("1234567890");
+        physician.setAddress("123 ABC Ave");
+        physician.setEmailaddress("docock@marvel.com");
+        physician.setLicencenumber("12345");
 
         MockitoAnnotations.openMocks(this);
         mockMvc = standaloneSetup(appController).setSingleView(mockView).build();
@@ -103,26 +121,71 @@ class AppControllerTest {
 
     @Test
     void saveDoctor() {
+        when(physicianRepository.save(physician)).thenReturn(physician);
+        physicianRepository.save(physician);
+        verify(physicianRepository,times(1)).save(physician);
     }
 
     @Test
-    void deletePatient() {
+    void deletePatient() throws Exception {
+        ArgumentCaptor<Long> idCapture = ArgumentCaptor.forClass(Long.class);
+        doNothing().when(patientRepository).deleteBypID(idCapture.capture());
+        patientRepository.deleteBypID(1L);
+        assertEquals(1L,idCapture.getValue());
+        verify(patientRepository,times(1)).deleteBypID(1L);
     }
 
     @Test
-    void editpatient() {
-    }
-
-    @Test
-    void saveEditPatient() {
+    void saveEditPatient() throws Exception {
+//        List<Patient> p2 = new ArrayList<Patient>();
+//
+//        Patient p = new Patient();
+//
+//        p.setPID(1L);
+//        p.setEmailaddress("johndoe@gmail.com");
+//        p.setPassword("123456");
+//        p.setFirstname("John");
+//        p.setLastname("Mast");
+//        p.setGender('M');
+//        p.setPhonenumber("8888888888");
+//        p.setCountrycode("1");
+//        p.setStateprovince("BC");
+//        p.setAddress("700 Royal Ave, New Westminster, BC");
+//        p.setHeight((float) 1.83);
+//        p.setWeight((float) 80.0);
+//        p.setMealsperday(3);
+//        p.setFavfood(1);
+//        p.setExercise(1);
+//        p.setExerciseduration(30);
+//        p.setPregnancystatus("N");
+//        p.setEmergencyfirstname("Jane");
+//        p.setEmergencylastname("Doe");
+//        p.setEmergencyphone("6666666666");
+//        p.setEmergencyemail("janedoe@gmail.com");
+//        p.setSubscriptionstatus("Y");
+//
+//        p2.add(p);
+//
+//        Long iid = 1l;
+//
+//        when(patientRepository.findPatientBypID(iid)).thenReturn(p2);
+//
+//        mockMvc.perform(get("/saveeditpatient").param("pID",String.valueOf(1L)))
+//                .andExpect(status().isOk())
+//                .andExpect(model().attribute("patient", p2.get(0)))
+//                .andExpect(view().name("adminpatient"));
+//
+//        verify(patientRepository,times(1)).findPatientBypID(anyLong());
+//        verifyNoMoreInteractions(patientRepository);
     }
 
     @Test
     void deletePhysician() {
-    }
-
-    @Test
-    void editphysician() {
+        ArgumentCaptor<Long> idCapture = ArgumentCaptor.forClass(Long.class);
+        doNothing().when(physicianRepository).deleteByphID(idCapture.capture());
+        physicianRepository.deleteByphID(1L);
+        assertEquals(1L,idCapture.getValue());
+        verify(physicianRepository,times(1)).deleteByphID(1L);
     }
 
     @Test
@@ -131,9 +194,15 @@ class AppControllerTest {
 
     @Test
     void saveSugar() {
+        when(sugarRepository.save(sugar)).thenReturn(sugar);
+        sugarRepository.save(sugar);
+        verify(sugarRepository,times(1)).save(sugar);
     }
 
     @Test
     void saveCarbs() {
+        when(foodRepository.save(food)).thenReturn(food);
+        foodRepository.save(food);
+        verify(foodRepository,times(1)).save(food);
     }
 }
