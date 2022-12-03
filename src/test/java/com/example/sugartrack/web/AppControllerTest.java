@@ -101,18 +101,6 @@ class AppControllerTest {
     }
 
     @Test
-    void signin() {
-    }
-
-    @Test
-    void signup() {
-    }
-
-    @Test
-    void doctor_signup() {
-    }
-
-    @Test
     void savePatient() throws Exception {
         when(patientRepository.save(patient)).thenReturn(patient);
         patientRepository.save(patient);
