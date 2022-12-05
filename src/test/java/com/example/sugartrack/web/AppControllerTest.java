@@ -132,7 +132,7 @@ class AppControllerTest {
 
     @Test
     void editpatient() throws Exception {
-        mockMvc.perform(get("/editpatient"))
+        mockMvc.perform(get("/editpatient").param("id", String.valueOf(1L)))
                 .andExpect(status().isOk())
                 .andExpect(view().name("editpatient"));
     }
